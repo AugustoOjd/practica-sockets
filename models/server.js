@@ -1,29 +1,43 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const cors_1 = __importDefault(require("cors"));
-require("dotenv/config");
-class Server {
-    constructor() {
-        this.app = (0, express_1.default)();
-        this.port = process.env.PORT;
-        this.paths = {};
+const express = require('express')
+const cors = require('cors')
+
+class Server{
+    constructor(){
+        this.app = express()
+        this.port = process.env.PORT
+
+
+        this.paths = {
+
+        }
+
         // this.conectarDB()
-        this.middleware();
-        this.routes();
+
+        this.middleware()
+
+        this.routes()
+
     }
-    middleware() {
-        this.app.use((0, cors_1.default)());
+
+
+    middleware(){
+
+        this.app.use( cors() )
     }
-    routes() {
+
+
+    routes(){
+
     }
-    listen() {
-        this.app.listen(this.port, () => {
-            console.log('Servidor conectado en puerto', this.port);
-        });
+
+
+    listen(){
+        this.app.listen( this.port, ()=>{
+            console.log('Servidor conectado en puerto', this.port)
+        })
     }
+
 }
-exports.default = Server;
+
+
+module.exports = Server
