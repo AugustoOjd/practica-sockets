@@ -11,12 +11,16 @@ const socketController = (socket) =>{
         console.log('cliente desconectado del server', socket.id)
     })
 
+    socket.emit('ultimo-ticket', ticketControl.ultimo)
 
-    socket.on('enviar-mensaje', (payload, callback)=>{
 
-        const id = 123456
-        callback({ id, fecha: new Date().getTime()})
-        socket.broadcast.emit('enviar-mensaje', payload)
+    socket.on('siguiente-ticket', (payload, callback)=>{
+
+        const siguiente = ticketControl.siguente()
+
+        callback(siguiente)
+
+        // TODO: Notificar que hay nuevo ticket pendiente de asignar
     })
 
 }

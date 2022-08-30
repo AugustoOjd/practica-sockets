@@ -62,7 +62,7 @@ class TicketControl {
 
         this.guardarDB()
 
-        return 'Ticket' + ticket.numero
+        return 'Ticket ' + ticket.numero
     }
 
     atenderTicket( escritorio ){
